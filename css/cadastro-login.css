@@ -1,0 +1,122 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #110B0F;
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+                        /* Tela cadastro */
+
+.img-cadastro{
+    background-image: url('../img/venus-renaissance.jpg');
+    width: 100%;
+    height: 520px;
+    background-repeat: no-repeat;
+    background-position:  0 10vh;
+    margin-top: 60px;
+}
+
+.fundo{
+    background-color: #ffffff9e;
+    border-radius: 5px;
+    width: 400px;
+    height: 460px;
+    float: right;
+    text-align: center;
+    margin: -500px auto;
+    padding: 20px 20px;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 35px;
+}
+
+.input{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.input input[type=text]{
+    width: 300px;
+    height: 40px;
+    margin: 10px 0;
+    border-radius: 5px;
+    color: black;
+    border: none;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+  }
+  
+.input2 input{
+    background-color: #DECF93;
+}
+
+  input[type=text]:focus {
+    border: 2px solid #DECF93;
+  }
+
+.btn{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn button{
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.btn2 button{
+    background-color: #F2C634A1;
+}
+
+button:hover {opacity: 1}
+
+                    /* Tela de login */
+ 
+                    
+.img-login{
+    background-image: url('../img/criacao-renaissance.jpg');
+    width: 100%;
+    height: 520px;
+    background-repeat: no-repeat;
+    background-position:  0 10vh;
+    margin: -60px;
+}
+
+.fundo-login{
+    background-color: #ffffff9e;
+    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    padding: 20px 20px;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 35px;
+    margin: -410px;
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 140px 0;
+}
+
+.btn1 button{
+    background-color:#809097;
+}
+
+.input1 input{
+    background: #C3BCA9;
+}

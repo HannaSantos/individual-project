@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style-tela1.css">
+    <link rel="shortcut icon" href="./img/tri1.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300&display=swap" rel="stylesheet">
+    <title>Artes</title>
+</head>
+<body>
+
+    <div id="progressbar"></div>
+    <div id="scrollpath"></div>
+
+    <div class="navbar">
+        <div class="alinha">
+        <ul>
+            <li><a href="#">10 a.C.</a></li>
+            <li><a href="#">1101</a></li>
+            <li><a href="#">1501</a></li>
+            <li><a href="#">1701</a></li>
+            <li><a href="#">1850</a></li>
+            <li><a href="#">1890</a></li>
+            <li><a href="#">1910</a></li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="sculpture">
+        <h2>sculpture</h2>
+           <div class="container">
+               <div class="box">
+                   <div class="box1"></div>
+                   <div class="box2"></div>
+                   <div class="box3"></div>
+               </div>
+           </div>
+    </div>
+   
+</body>
+</html>
+<script>
+
+    let progress = document.getElementById('progressbar');
+    let totalheight = document.body.scrollHeight - window.innerHeight;
+    window.innerHeight;
+    window.onscroll = function(){
+        let progressHeigth = (window.pageYOffset / totalheight) * 100;
+        progress.style.height = progressHeigth + "%";
+    }
+
+</script>
