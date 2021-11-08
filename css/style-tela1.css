@@ -99,3 +99,318 @@ li a {
     transform: scale(1.1);
   }
 
+.box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+            /* Tela sculpture */
+
+.sculpture{
+    margin: 0;
+    padding: auto;
+}
+
+.sculpture .titulo {
+    color: white;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 140px;
+}
+
+.sculpture .alinha-titulo{
+    margin: 120px -150px;
+    padding: auto;
+    position: absolute;
+}
+
+.sculpture .traparencia{
+    margin: 200px 100px;
+    padding: auto;
+    position: absolute;
+    color: rgba(255, 255, 255, 0.274);
+}
+
+.box2 {
+    background-image: url('../img/VenusdeMilo.jpg');
+    width: 100%;
+    height: 500px;
+    background-size: 350px;
+    background-repeat: no-repeat;
+    align-items: center;
+    margin: 60px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+.box1{
+    color: white;
+    text-align: right;
+    width: 60%;
+    align-items: flex-start;
+    margin: 400px auto;
+    line-height: 23px;
+    font-size: 18px;
+}
+
+.box3{
+    color: white;
+    text-align: left;
+    width: 80%;
+    margin: 150px 100px;
+    line-height: 23px;
+    font-size: 18px;
+}
+
+.sculpture .destaque{
+    display: flex;
+    margin: 10px;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    font-size: 15px;
+}
+
+                 /* tela art gotica */
+
+.gotica{
+    width: 100%;
+    height: 600px;
+    margin: -250px auto;
+    padding: 0;
+}
+
+.gotica .titulo {
+    color: white;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 140px;
+}
+
+.gotica .alinha-titulo{
+    margin: 280px -100px;
+    padding: auto;
+    position: absolute;
+}
+
+.gotica .traparencia{
+    margin: 200px 150px;
+    padding: auto;
+    position: absolute;
+    color: rgba(255, 255, 255, 0.274);
+}
+
+.box4{
+    color: white;
+    text-align: left;
+    width: 50%;
+    line-height: 23px;
+    font-size: 18px;
+}
+
+.box5{
+    color: white;
+    text-align: justify;
+    width: 80%;
+    line-height: 23px;
+    font-size: 18px;
+    margin: 30px 40px;
+}
+
+.box6{
+    background-image: url('../img/gotica.jpg');
+    width: 100%;
+    height: 500px;
+    background-size: 350px;
+    background-repeat: no-repeat;
+    align-items: center;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+.gotica .destaque{
+    display: flex;
+    margin: 10px;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    font-size: 15px;
+}
+
+                 /* tela barroco */
+
+.barroco{
+    margin: 400px auto;
+    padding: auto;
+}
+
+.barroco .titulo {
+    color: white;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 140px;
+}
+
+.barroco .alinha-titulo{
+    margin: 380px 150px;
+    padding: auto;
+    position: absolute;
+}
+
+.barroco .traparencia{
+    margin: 500px -50px;
+    padding: auto;
+    position: absolute;
+    color: rgba(255, 255, 255, 0.274);
+}
+
+.box7{
+    background-image: url('../img/barroco.jpg');
+    width: 100%;
+    height: 400px;
+    background-size: 500px;
+    background-repeat: no-repeat;
+    align-items: center;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.box8{
+    color: white;
+    text-align: justify;
+    width: 50%;
+    line-height: 23px;
+    font-size: 18px;
+    margin: 70px 20px;
+}
+
+.barroco .destaque{
+    display: flex;
+    margin: 10px;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    font-size: 15px;
+}
+
+            /* tela romanticism */
+
+.romanticism{
+    margin: 0;
+    padding: auto;
+}
+
+.romanticism .titulo {
+    color: white;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 140px;
+}
+
+.romanticism .alinha-titulo{
+    margin: 40px -70px;
+    padding: auto;
+    position: absolute;
+}
+
+.romanticism .traparencia{
+    margin: -40px 0;
+    padding: auto;
+    position: absolute;
+    color: rgba(255, 255, 255, 0.274);
+}
+
+.box9{
+    background-image: url('../img/romanticism.jpg');
+    width: 100%;
+    height: 500px;
+    background-size: 400px;
+    background-repeat: no-repeat;
+    background-position: center 0; 
+    margin: 0 200px;
+}
+
+.box10{
+    color: white;
+    text-align: justify;
+    width: 40%;
+    line-height: 23px;
+    font-size: 18px;
+    
+}
+
+.box11{
+    color: white;
+    text-align: justify;
+    width: 50%;
+    line-height: 23px;
+    font-size: 18px;
+
+}
+
+.romanticism .teste{
+    margin: -80px 0;
+    display: flex;
+    justify-content: space-around;
+    height: 400px;
+}
+
+             /* tela de realism */
+
+.realism{
+    margin:0 auto;
+    padding: auto;
+}
+
+.realism .titulo {
+    color: white;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 140px;
+}
+
+.realism .alinha-titulo{
+    margin: -350px 80px;
+    padding: auto;
+    position: absolute;
+}
+
+.realism .traparencia{
+    margin: -420px 360px;
+    padding: auto;
+    position: absolute;
+    color: rgba(255, 255, 255, 0.274);
+}
+
+.realism .teste{
+    margin: 0;
+    padding: 100px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.box13{
+    color: white;
+    text-align: justify;
+    width: 60%;
+    line-height: 23px;
+    font-size: 18px;
+    margin: 60px;
+}
+
+.box14{
+    background-image: url('../img/realismo.jpg');
+    width: 100%;
+    height: 500px;
+    background-size: 550px;
+    background-repeat: no-repeat;
+    background-position: center 0; 
+    margin: 0;
+}
+
+.box12{
+    color: white;
+    text-align: justify;
+    width: 100%;
+    line-height: 23px;
+    font-size: 18px;
+    margin: -180px 400px;
+    padding: auto;
+}
