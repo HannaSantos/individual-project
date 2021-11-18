@@ -54,3 +54,16 @@ CREATE TABLE medida (
 	momento DATETIME,
 	fk_aquario INT
 );
+
+
+CREATE DATABASE arte;
+
+USE arte;
+
+CREATE TABLE usuario (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(50),
+	email VARCHAR(50),
+	senha VARCHAR(50),
+    telefone varchar(13)
+);
