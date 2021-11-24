@@ -4,6 +4,10 @@ body{
     background-color: #000000;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 .container{
     width: 80%;
     margin: 0 auto;
@@ -594,7 +598,9 @@ footer{
     text-align: center;
     padding: 20px;
     font-family: 'Cormorant Infant', serif;
-    font-size: 40px;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 footer a {

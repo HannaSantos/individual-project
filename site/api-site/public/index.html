@@ -25,11 +25,11 @@
             <div class="fundo-login">
                 <span>Login</span>
                     <div class="input input1">
-                        <input type="text" placeholder="E-mail">
-                         <input type="text" placeholder="Senha">
+                        <input id="email_input1" type="text" placeholder="E-mail">
+                         <input id="senha_input1" type="password" placeholder="Senha">
                     </div>
                     <div class="btn btn1">
-                        <button onclick="document.location.href='./sobre.html'">Entrar</button>
+                        <button onclick="entrar()">Entrar</button>
                         <button onclick="Modal.open()">Cadastrar</button>
                     </div>
             </div>
@@ -49,7 +49,7 @@
                      <input id="senha_input" type="password" placeholder="Senha">
                      <input id="telefone_input" type="text" placeholder="Telefone">
                      <div class="btn btn2">
-                     <button onclick="Modal.close()" type="button" class="btn_entrar">Cadastrar</button>
+                     <button onclick="cadastrar()" type="button" class="btn_entrar">Cadastrar</button>
                      </div>
                 </div>
           </div>
@@ -57,69 +57,6 @@
     </div>
 
 
-    <script type="text/javascript" src="./js/cadastro-login.js"></script>
+    <script type="text/javascript" src="./js/login.js"></script>
 </body>
 </html>
-<script>
-
-    function cadastrar() {
-
-        var nomeVar = nome_input.value;
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-        var telefoneVar = telefone_input.value;
-
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || telefoneVar == "") {
-
-            window.alert("Preencha todos os campos para prosseguir!");
-            if (nomeVar == "") {
-                console.log('nome está em branco')
-            }
-            if (emailVar == "") {
-                console.log('email está em branco')
-            }
-            if (senhaVar == "") {
-                console.log('senha está em branco')
-            }
-            if (telefoneVar == "") {
-                console.log('confirmacaoSenha está em branco')
-            }
-            return false;
-        }
-
-        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-            return false;
-        }
-
-       
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                telefoneServer: telefoneVar
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                window.alert("Cadastro realizado com sucesso!");
-                window.location = "index.html";
-                limparFormulario();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-
-        return false;
-    }
-
-</script>
