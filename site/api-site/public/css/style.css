@@ -64,6 +64,43 @@ body{
     filter: blur(20px);
 }
 
+.menu{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 0;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: none;
+    background-color: #000000;
+  }
+  
+.menu  li {
+    float:left;
+  }
+  
+.menu  li a {
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 0 30px;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 28px;
+  }
+  
+.menu  li a:hover:not(.active) {
+    background-color: rgba(190, 49, 49, 0.418);
+  }
+
 .box {
     display: flex;
     justify-content: space-evenly;
@@ -90,11 +127,16 @@ body{
     height: 10%;
     margin: 20px 0;
     text-align: left;
+    position:relative;
+    top:0;
+    transition: all 0.3s ease-in-out
 }
 
 .text2{
     display: flex;
-    margin: 10px 40px;
+    margin: 40px -30px;
+    height: 50%;
+    width: auto;
 }
 
 .div_texto2{
@@ -102,11 +144,32 @@ body{
     height: 10%;
     margin: 65px -80px;
     text-align: left;
+    position:relative;
+    top:0;
+    transition: all 0.3s ease-in-out
+}
+
+.div_texto1:hover {
+    top:-5px;
+   transition: all .5s ease-in-out
+}
+
+.div_texto2:hover {
+    top:-5px;
+   transition: all .5s ease-in-out
 }
 
 .span{
     font-family: 'Cormorant Infant', serif;
     font-size: 35px;
+    position:relative;
+    top:0;
+    transition: all 0.3s ease-in-out
+}
+
+span:hover {
+    top:-8px;
+   transition: all .3s ease-in-out
 }
 
 .span-trasparece{
@@ -119,15 +182,15 @@ body{
 
 .boxC{
     width: 100%;
-    height: 580px;
-    background-size: 400px;
+    height: 600px;
+    background-size: 350px;
     background-image: url('../img/angelo-lateral.jpg');
     background-repeat: no-repeat;
     background-position: center;
     align-items: center;
-    transition: 3s;
+    position: relative;
+    transition: all .8s;
     margin: 60px 90px;
-    margin-right: 180px;
     color: #ffffff25;
 }
 
@@ -140,7 +203,7 @@ body{
 }
 
 .boxC:hover {
-    transition: 3s;
+    transition: all .9s ease-in-out;
     background-image: url('../img/davi-corpo.jpeg');
 }
 
@@ -154,11 +217,19 @@ body{
     width: 90%;
 }
 
+.boxR:hover {
+    top:-4px;
+   transition: all .2s ease-in-out}
+
+
 .div_texto3{
     width: 100%;
     height: 10%;
     margin: 65px -80px;
     text-align: right;
+    position:relative;
+    top:0;
+    transition: all 0.3s ease-in-out
 }
 
 .div_texto4{
@@ -166,6 +237,19 @@ body{
     height: 10%;
     margin: 20px -80px;
     text-align: right;
+    position:relative;
+    top:0;
+    transition: all 0.3s ease-in-out
+}
+
+.div_texto3:hover {
+    top:-5px;
+   transition: all .5s ease-in-out
+}
+
+.div_texto4:hover {
+    top:-5px;
+   transition: all .5s ease-in-out
 }
 
 .text3 .span-trasparece{
@@ -184,23 +268,6 @@ body{
     font-size: 40px;
 }
 
-.btn{
-    display:flex;
-    justify-content:space-around;
-}
-
-.btn button{
-    width: 200px;
-    height: 50px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 15px;
-    opacity: 0.6;
-    transition: 0.3s;
-}
-
-button:hover {opacity: 1}
 
                 /* rodapé */
 
@@ -212,7 +279,7 @@ footer{
     text-align: center;
     padding: 20px;
     font-family: 'Cormorant Infant', serif;
-    font-size: 40px;
+    font-size: 20px;
 }
 
 footer a {

@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300&display=swap" rel="stylesheet">
-    <title>Cadastro</title>
+    <title>Login</title>
 
     <script src="./js/funcoes.js"></script>
 </head>
@@ -18,23 +18,44 @@
     <div id="progressbar"></div>
     <div id="scrollpath"></div>
 
-<div class="img-cadastro"></div>
+<div class="img-login"></div>
     
     <div class="container">
-        <div class="fundo">
-            <span>Cadastro</span>
+        <div class="box">
+            <div class="fundo-login">
+                <span>Login</span>
+                    <div class="input input1">
+                        <input type="text" placeholder="E-mail">
+                         <input type="text" placeholder="Senha">
+                    </div>
+                    <div class="btn btn1">
+                        <button onclick="document.location.href='./sobre.html'">Entrar</button>
+                        <button onclick="Modal.open()">Cadastrar</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay">
+        <div class="modal">
+          <div class="info">
+            <span class="fonte_inp alinhar">Cadastro</span>
+          <img src="./img/botao-fechar.png" class="btn-fecha" onclick="Modal.close()" alt="Fechar">
+          </div>
+          <div class="inp-group">
                 <div class="input input2">
                     <input id="nome_input" type="text" placeholder="Nome">
                     <input id="email_input" type="text" placeholder="E-mail">
                      <input id="senha_input" type="password" placeholder="Senha">
                      <input id="telefone_input" type="text" placeholder="Telefone">
+                     <div class="btn btn2">
+                     <button onclick="Modal.close()" type="button" class="btn_entrar">Cadastrar</button>
+                     </div>
                 </div>
-                <div class="btn btn2">
-                    <button onclick="cadastrar()">Cadastrar</button>
-                    <button onclick="document.location.href='./login.html'">Login</button>
-                </div>
+          </div>
         </div>
     </div>
+
 
     <script type="text/javascript" src="./js/cadastro-login.js"></script>
 </body>
@@ -89,7 +110,7 @@
 
             if (resposta.ok) {
                 window.alert("Cadastro realizado com sucesso!");
-                window.location = "login.html";
+                window.location = "index.html";
                 limparFormulario();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
