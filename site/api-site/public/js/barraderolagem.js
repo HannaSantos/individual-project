@@ -5,3 +5,5 @@ let progress = document.getElementById("progressbar");
     let progressHeigth = (window.pageYOffset / totalheight) * 100;
     progress.style.height = progressHeigth + "%";
   };
+
+ 

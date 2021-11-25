@@ -19,7 +19,7 @@
 
     <div class="menu">
         <ul>
-          <li><a href="./artes.html">Qual arte ler hoje?</a></li>
+          <li><a onclick="gerar()">Qual arte ler hoje?</a></li>
           <li><a href="./index.html">Retornar ao cadastro</a></li>
         </ul>
       </div>
@@ -103,3 +103,46 @@
       <script type="text/javascript" src="./js/barraderolagem.js"></script> 
 </body>
 </html>
+<script>
+
+function gerar(){
+
+var numero = (Math.random() * 6 + 1).toFixed(); 
+console.log(numero)
+
+window.addEventListener("load", function(){
+  if (numero == 1){ 
+    var valor = window.open("artes.html")
+    valor.document.getElementById('3')
+  }
+   });
+
+// if (numero == 1) {
+
+//   var valor = window.open("artes.html")
+
+//   x = valor.document.getElementById('3')
+
+// }
+// if (numero == 2) {
+//     valor = window.open("artes.html #2")
+// }
+// if (numero == 3) {
+//     $( "#box" ).load( "artes.html #3" );
+// }
+// if (numero == 4) {
+//     $( "#box" ).load( "artes.html #4" );
+// }
+// if (numero == 5) {
+//     $( "#box" ).load( "artes.html #5" );
+// }
+// if (numero == 6) {
+//     $( "#box" ).load( "artes.html #6" );
+// }
+// if (numero == 7) {
+//     $( "#box" ).load( "artes.html #7" );
+// }
+
+}
+
+</script>
