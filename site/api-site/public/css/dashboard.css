@@ -63,3 +63,20 @@ body{
   background: linear-gradient(to top, #ff0000, #db6f6b);
   filter: blur(20px);
 }
+
+.divisoria{
+  display: flex;
+  justify-content: center;
+}
+
+.left{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rigth{
+  color: white;
+}
