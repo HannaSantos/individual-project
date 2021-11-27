@@ -27,6 +27,7 @@ body{
   top: 0;
   right: 0;
   width: 6px;
+  height: 100%;
   border-radius: 5px;
   background: linear-gradient(to top, #ff0000, #db6f6b);
   animation: animate 10s linear infinite;
@@ -64,19 +65,134 @@ body{
   filter: blur(20px);
 }
 
-.divisoria{
+.menu{
+  margin: 0;
+  padding: 0;
   display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 0;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  background-color: #000000;
+}
+
+.menu  li {
+  float:left;
+}
+
+.menu  li a {
+  display: block;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  margin: 0 30px;
+  font-family: 'Cormorant Infant', serif;
+  font-size: 25px;
+}
+
+.menu  li a:hover:not(.active) {
+  background-color: rgba(190, 49, 49, 0.418);
+}
+
+.divisoria{
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 .left{
   color: white;
+  width: 100%;
+
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+}
+
+.titulo span{
+  font-family: 'Cormorant Infant', serif;
+  font-size: 30px;
+  color: white;
+  display: flex;
 }
 
 .rigth{
   color: white;
+  width: 50%;
+}
+
+.arte1{
+  margin: 10px 0;
+
+}
+
+.span_1{
+  margin: 20px auto;
+}
+
+.arte1 img {
+  height: 17rem;
+  cursor: pointer;
+  transition: 0.8s;
+}
+
+img:hover{
+  opacity: 0.4;
+  transition: 0.8s;
+}
+
+.arte2{
+  margin: 10px 0;
+}
+
+.span_2{
+  margin: 20px auto;
+}
+
+.arte2 img {
+  height: 15rem;
+  cursor: pointer;
+  margin: 5px auto;
+  transition: 0.8s;
+  border-radius: 5px;
+}
+
+
+.arte3{
+  margin: 10px 0;
+}
+
+.span_3{
+  margin: 20px auto;
+}
+
+.arte3 img {
+  height: 14rem;
+  cursor: pointer;
+  margin: 5px auto;
+  transition: 0.8s;
+  border-radius: 5px;
+}
+
+.rigth{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graph {
+  background-color: #ffffff8a;
+  width: 50%;
+  height: 35vh;
+  margin: 10px auto;
+  padding: 5px;
+  border-radius: 5px;
 }

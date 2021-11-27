@@ -1,49 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/dashboard.css">
-    <title>Document</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/dashboard.css">
+  <link rel="shortcut icon" href="./img/tri.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300&display=swap" rel="stylesheet">
+  <title>Votação</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-<div class="divisoria">
-  <div class="left">
+
+  <div id="progressbar"></div>
+  <div id="scrollpath"></div>
+
+  <div class="menu">
+    <ul>
+      <li><a href="./artes.html">Retonar</a></li>
+      <li><a href="./sobre.html">Sobre</a></li>
+    </ul>
+  </div>
+
+  <div class="divisoria">
     <div class="container">
       <div class="titulo">
         <span>Selecione sue estilo favorito:</span>
+        <span style="font-size: 15px;">**A seleção são atuliazada a cada 7 dias</span>
       </div>
-      <div class="arte1">
-        <span>Escultura</span>
-        <div class="img1"></div>
-      </div>
-      <div class="arte2">
-        <span>Arte Gotica</span>
-        <div class="img2"></div>
-      </div>
-      <div class="arte3">
-        <span>Arte Barroco</span>
-        <div class="img3"></div>
-      </div>
-      <span>Arte são atuliazada a cada 7 dias</span>
-    </div>
-  </div>
-  
-  <div class="rigth">
-    <div class="container">
-      <div class="titulo">
-        <span>Classificação das artes dessa semana:</span>
-      </div>
-      <div class="graph1">
-        !!!!!!
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="left">
+        <div class="arte1">
+          <div class="img1">
+            <img src="../public/img/escultura1.jpg">
+          </div>
 
-  <script type="text/javascript" src="./js/barraderolagem.js"></script>
+          <div class="span_1">
+            <span>Escultura</span> <br>
+            <span><i>Ondina emergindo das águas</i> <br>
+              Chauncey Bradley Ives</span>
+          </div>
+        </div>
+        <div class="arte2">
+          <div class="img2">
+            <img src="../public/img/nouveau2.jpg">
+          </div>
+
+          <div class="span_2">
+            <span>Art nouveau</span> <br>
+            <span><i>Sarah Bernhardt (1896)</i> <br>
+              Alfons Maria Mucha.</span>
+          </div>
+        </div>
+        <div class="arte3">
+          <div class="img3">
+            <img src="../public/img/barroco1.jpg.opdownload">
+          </div>
+
+          <div class="span_3">
+            <span>Barroco</span> <br>
+            <span><i>O Nascimento de Vênus</i> <br>
+              Sandro Botticelli </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="graph">
+        <canvas id="chartBar" style="width: 100%; height: 100%;"></canvas>
+      </div>
+    </div>
+  </div>
+  </div>
+
 </body>
+
 </html>
+<script>
+//barra de rolagem
+let progress = document.getElementById("progressbar");
+  let totalheight = document.body.scrollHeight - window.innerHeight;
+  window.innerHeight;
+
+  //grafico::
+
+  var ctxBar = document.getElementById("chartBar").getContext("2d");
+  var rotulosBar = ["Escultura", "Art nouveau", "Barroco"];
+  var dataBar = [10, 70, 50, 5, 30, 65];
+  var configBar = {
+    type: 'bar',
+    data: {
+      labels: rotulosBar, // referenciando a variável de rótulos (labels) para o gráfico de barras
+      datasets: [
+        {
+          label: 'Votação do estilos',
+          data: dataBar, // referenciando a variável de dados para o gráfico de barras
+          backgroundColor: [
+            '#BF3124',
+            '#BF532C',
+            '#BF7E45',
+          ],
+          borderColor: [
+            '#BF3124',
+            '#BF532C',
+            '#BF7E45',
+          ],
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      // por padrão, vem como 'true', e faz com que o gráfico se 'mantenha com o mesmo aspecto de proporção', não ficando responsivo
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
+      }
+    }
+  }
+  var ax_chartBar = new Chart(ctxBar, configBar); // criando o gráfico, chamando o new Chart da biblioteca, passando o contexto e as configurações
+
+</script>

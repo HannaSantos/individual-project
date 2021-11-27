@@ -94,7 +94,7 @@ body{
     text-decoration: none;
     margin: 0 30px;
     font-family: 'Cormorant Infant', serif;
-    font-size: 28px;
+    font-size: 25px;
   }
   
 .menu  li a:hover:not(.active) {
@@ -189,21 +189,22 @@ span:hover {
     background-position: center;
     align-items: center;
     position: relative;
-    transition: all .8s;
+    transition: 0.9s;
     margin: 60px 90px;
     color: #ffffff25;
+    opacity: 0.5;
 }
 
 .boxC .text5{
     font-family: 'Cormorant Infant', serif;
     font-size: 35px;
     text-align: center;
-    transition: 04s;
     color: snow;
 }
 
 .boxC:hover {
-    transition: all .9s ease-in-out;
+    opacity: 0.8;
+    transition: 1s;
     background-image: url('../img/davi-corpo.jpeg');
 }
 
