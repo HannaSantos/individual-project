@@ -76,6 +76,8 @@
         <canvas id="chartBar" style="width: 100%; height: 100%;"></canvas>
       </div>
     </div>
+
+    <button onclick="obterTotal()">teste</button>
   </div>
   </div>
 
@@ -167,6 +169,7 @@ fetch(`/artes/obterTotal/`, { cache: 'no-store' }).then(function (response) {
             resposta.reverse();
            // localStorage.setItem('quantidadeVotos',resposta[0].quantidade)
            totalArtes = JSON.stringify(resposta[0]['Total']);
+           
             
         });
     } else {
@@ -202,17 +205,22 @@ fetch(`/artes/obterTotal/`, { cache: 'no-store' }).then(function (response) {
             if (temp == ax_escultura) {
               console.log('CADASTREI ' + temp)
               cont_escultura++;
+              console.log(cont_escultura)
             } else if (temp == ax_nouveau) {
               console.log('CADASTREI ' + temp)
               cont_nouveau++;
+              console.log(cont_nouveau)
             } else if (temp == ax_barroco) {
               console.log('CADASTREI ' + temp)
               cont_barroco++;
+              console.log(cont_barroco)
             } else {
               console.log('erro')
             }
 
           }
+
+          grafico(cont_escultura, cont_nouveau, cont_barroco);
 
           //console.log(cont_espirito)
 
@@ -232,17 +240,22 @@ fetch(`/artes/obterTotal/`, { cache: 'no-store' }).then(function (response) {
 
   //grafico::
 
-  var ctxBar = document.getElementById("chartBar").getContext("2d");
-  var rotulosBar = ["Escultura", "Art nouveau", "Barroco"];
-  var dataBar = [cont_escultura, cont_nouveau, cont_barroco];
+  function grafico(cont_escultura, cont_nouveau, cont_barroco) {
+   
+    
+    console.log(cont_barroco)
+    console.log(cont_escultura)
+    console.log(cont_nouveau)
+
+    var ctxBar = document.getElementById("chartBar").getContext("2d");
   var configBar = {
     type: 'bar',
     data: {
-      labels: rotulosBar, // referenciando a variável de rótulos (labels) para o gráfico de barras
+      labels: ["Escultura", "Art nouveau", "Barroco"], // referenciando a variável de rótulos (labels) para o gráfico de barras
       datasets: [
         {
           label: 'Votação do estilos',
-          data: dataBar, // referenciando a variável de dados para o gráfico de barras
+          data: [cont_escultura, cont_nouveau, cont_barroco], // referenciando a variável de dados para o gráfico de barras
           backgroundColor: [
             '#BF3124',
             '#BF532C',
@@ -267,6 +280,10 @@ fetch(`/artes/obterTotal/`, { cache: 'no-store' }).then(function (response) {
       }
     }
   }
-  var ax_chartBar = new Chart(ctxBar, configBar); // criando o gráfico, chamando o new Chart da biblioteca, passando o contexto e as configurações
+  var ax_chartBar = new Chart(ctxBar, configBar); 
+
+  }
+
+ 
 
 </script>
