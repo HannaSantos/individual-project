@@ -36,7 +36,7 @@
       <div class="left">
         <div class="arte1">
           <div class="img1">
-            <img src="../public/img/escultura1.jpg">
+            <img src="./img/escultura1.jpg" onclick="escultura()">
           </div>
 
           <div class="span_1">
@@ -47,7 +47,7 @@
         </div>
         <div class="arte2">
           <div class="img2">
-            <img src="../public/img/nouveau2.jpg">
+            <img src="./img/nouveau2.jpg" onclick="nouveau()">
           </div>
 
           <div class="span_2">
@@ -58,7 +58,7 @@
         </div>
         <div class="arte3">
           <div class="img3">
-            <img src="../public/img/barroco1.jpg.opdownload">
+            <img src="./img/barroco1.jpg.opdownload" onclick="barroco()">
           </div>
 
           <div class="span_3">
@@ -83,16 +83,158 @@
 
 </html>
 <script>
-//barra de rolagem
-let progress = document.getElementById("progressbar");
+  //barra de rolagem
+  let progress = document.getElementById("progressbar");
   let totalheight = document.body.scrollHeight - window.innerHeight;
   window.innerHeight;
+
+  //Cadastrar votacaooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+  var selecaoArte = 0;
+  var totalArtes = 0;
+
+  cont_escultura = 0;
+  cont_nouveau = 0;
+  cont_barroco = 0;
+
+  function escultura() {
+    selecaoArte = 1;
+    obterTotal()
+    cadastrarArtes()
+    enviarGrafico()
+  }
+
+  function nouveau() {
+    selecaoArte = 2;
+    obterTotal()
+    cadastrarArtes()
+    enviarGrafico()
+  }
+
+  function barroco() {
+    selecaoArte = 3;
+    obterTotal()
+    cadastrarArtes()
+    enviarGrafico()
+  }
+
+  function cadastrarArtes() {
+
+    var selecaoVar = selecaoArte;
+    var id = sessionStorage.ID_USUARIO;
+    console.log(id)
+    console.log(selecaoVar)
+
+    fetch("/usuarios/cadastrarArtes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        selecaoServer: selecaoVar,
+        idServer: id
+      })
+    }).then(function (resposta) {
+
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        console.log(JSON.stringify(resposta))
+
+      } else {
+        throw ("Houve um erro ao tentar realizar o cadastro!");
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+
+    return false;
+  }
+
+  //oi
+
+  // pegar dados e insirir no graficoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+  function obterTotal() {
+
+fetch(`/artes/obterTotal/`, { cache: 'no-store' }).then(function (response) {
+    
+    if (response.ok) {
+        
+        response.json().then(function (resposta) {
+            
+            console.log(`Dados de votos totais: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+           // localStorage.setItem('quantidadeVotos',resposta[0].quantidade)
+           totalArtes = JSON.stringify(resposta[0]['Total']);
+            
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+
+  function enviarGrafico(id) {
+
+    fetch(`/artes/enviarGrafico/${id}`, { cache: 'no-store' }).then(function (response) {
+
+      if (response.ok) {
+
+        response.json().then(function (resposta) {
+
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+          for (let i = 0; i < totalArtes; i++) {
+
+
+            temp = JSON.stringify(resposta[i]['fkvota']);
+
+            var ax_escultura = 1;
+            var ax_nouveau = 2;
+            var ax_barroco = 3;
+
+
+            if (temp == ax_escultura) {
+              console.log('CADASTREI ' + temp)
+              cont_escultura++;
+            } else if (temp == ax_nouveau) {
+              console.log('CADASTREI ' + temp)
+              cont_nouveau++;
+            } else if (temp == ax_barroco) {
+              console.log('CADASTREI ' + temp)
+              cont_barroco++;
+            } else {
+              console.log('erro')
+            }
+
+          }
+
+          //console.log(cont_espirito)
+
+          let dado = JSON.stringify(resposta[0]);
+          //console.log(dado)
+          resposta.reverse();
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+  }
 
   //grafico::
 
   var ctxBar = document.getElementById("chartBar").getContext("2d");
   var rotulosBar = ["Escultura", "Art nouveau", "Barroco"];
-  var dataBar = [10, 70, 50, 5, 30, 65];
+  var dataBar = [cont_escultura, cont_nouveau, cont_barroco];
   var configBar = {
     type: 'bar',
     data: {

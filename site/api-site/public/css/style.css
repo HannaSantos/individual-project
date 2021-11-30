@@ -80,6 +80,7 @@ body{
     overflow: hidden;
     border: none;
     background-color: #000000;
+    cursor: pointer;
   }
   
 .menu  li {
