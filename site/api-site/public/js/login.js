@@ -45,8 +45,12 @@ function cadastrar() {
         return false;
     }
 
-    if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-        window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+    if (emailVar.indexOf("@") == -1) {
+        window.alert("Ops, e-mail inválido! tente inserir '@'.");
+        return false;
+    }
+    if (emailVar.indexOf(".com") == -1) {
+        window.alert("Ops, e-mail inválido! tente inserir '.com'.");
         return false;
     }
 

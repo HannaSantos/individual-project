@@ -94,7 +94,7 @@ function cadastrar(req, res) {
     }
 }
 
-function cadastrarArtes(req, res) {
+/* function cadastrarArtes(req, res) {
     var id = req.body.idServer;
     var selecao = req.body.selecaoServer;
 
@@ -120,7 +120,7 @@ function cadastrarArtes(req, res) {
                 }
             );
     }
-}
+} */
 
 function enviarGrafico(req, res) {
     var id = req.body.idServer;
@@ -163,6 +163,5 @@ module.exports = {
     cadastrar,
     listar,
     testar,
-    cadastrarArtes,
     enviarGrafico
 }

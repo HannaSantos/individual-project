@@ -1,6 +1,72 @@
 var artesModel = require("../models/artesModel");
 
-function buscarUltimasMedidas(req, res) {
+function cadastrarArte(req, res) {
+    var idArte = req.body.idArteServer;
+    var idUsuario = req.body.idUsuarioServer;
+
+    if (idArte == undefined) {
+        res.status(400).send("Seu idArte está undefined!");
+    } else if (idUsuario == undefined) {
+        res.status(400).send("O nome foi adcionado está undefined!");
+    } else {
+        
+        artesModel.cadastrarArte(idArte, idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function contagemDados(req, res) {
+
+    var id = req.params.id;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    artesModel.contagemDados().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os ultimos votos", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+} 
+
+function enviarGrafico(req, res) {
+
+    var id = req.params.id;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    artesModel.enviarGrafico(id).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+/* function buscarUltimasMedidas(req, res) {
 
     var id = req.params.id;
 
@@ -56,10 +122,10 @@ function obterTotal(req, res) {
         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
-}
+} */
 
 module.exports = {
-    buscarUltimasMedidas,
-    enviarGrafico,
-    obterTotal
+    cadastrarArte,
+    contagemDados,
+    enviarGrafico
 }

@@ -92,49 +92,47 @@
 
   //Cadastrar votacaooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
-  var selecaoArte = 0;
+  var idArte = [];
   var totalArtes = 0;
 
-  cont_escultura = 0;
+/*   cont_escultura = 0;
   cont_nouveau = 0;
-  cont_barroco = 0;
+  cont_barroco = 0;  */
 
   function escultura() {
-    selecaoArte = 1;
-    obterTotal()
-    cadastrarArtes()
-    enviarGrafico()
+    idArte = 1;
+    cadastrarArte()
+    contagemDados()
   }
 
   function nouveau() {
-    selecaoArte = 2;
-    obterTotal()
-    cadastrarArtes()
-    enviarGrafico()
+    idArte = 2;
+    cadastrarArte()
+    contagemDados()
   }
 
   function barroco() {
-    selecaoArte = 3;
-    obterTotal()
-    cadastrarArtes()
-    enviarGrafico()
+    idArte = 3;
+    cadastrarArte()
+    contagemDados()
   }
 
-  function cadastrarArtes() {
+  function cadastrarArte() {
 
-    var selecaoVar = selecaoArte;
-    var id = sessionStorage.ID_USUARIO;
-    console.log(id)
-    console.log(selecaoVar)
+    var idArteVar = idArte;
+    var idUsuarioVar = sessionStorage.ID_USUARIO;
 
-    fetch("/usuarios/cadastrarArtes", {
+    console.log(idUsuarioVar)
+    console.log(idArteVar)
+
+    fetch("/artes/cadastrarArte", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        selecaoServer: selecaoVar,
-        idServer: id
+        idUsuarioServer: idUsuarioVar,
+        idArteServer: idArteVar
       })
     }).then(function (resposta) {
 
@@ -153,11 +151,92 @@
     return false;
   }
 
+function contagemDados() {
+
+fetch(`/artes/contagemDados/`, { cache: 'no-store' }).then(function (response) {
+    
+    if (response.ok) {
+        
+        response.json().then(function (resposta) {
+            
+            console.log(`Dados de votos totais: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+           // localStorage.setItem('quantidadeVotos',resposta[0].quantidade)
+            totalArtes = JSON.stringify(resposta[0]['Total']);
+           
+            
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+function enviarGrafico(id) {
+
+fetch(`/artes/enviarGrafico/${id}`, { cache: 'no-store' }).then(function (response) {
+
+  if (response.ok) {
+
+    response.json().then(function (resposta) {
+
+      console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+      for (let i = 0; i < totalArtes; i++) {
+
+
+        temp = JSON.stringify(resposta[i]['fkvota']);
+
+        var ax_escultura = 1;
+        var ax_nouveau = 2;
+        var ax_barroco = 3;
+
+
+        if (temp == ax_escultura) {
+          console.log('CADASTREI ' + temp)
+          cont_escultura++;
+          console.log(cont_escultura)
+        } else if (temp == ax_nouveau) {
+          console.log('CADASTREI ' + temp)
+          cont_nouveau++;
+          console.log(cont_nouveau)
+        } else if (temp == ax_barroco) {
+          console.log('CADASTREI ' + temp)
+          cont_barroco++;
+          console.log(cont_barroco)
+        } else {
+          console.log('erro')
+        }
+
+      }
+
+      grafico(cont_escultura, cont_nouveau, cont_barroco);
+
+      //console.log(cont_espirito)
+
+      let dado = JSON.stringify(resposta[0]);
+      //console.log(dado)
+      resposta.reverse();
+
+    });
+  } else {
+    console.error('Nenhum dado encontrado ou erro na API');
+  }
+})
+  .catch(function (error) {
+    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+  });
+}
+
+
   //oi
 
   // pegar dados e insirir no graficoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
-  function obterTotal() {
+  /* function obterTotal() {
 
 fetch(`/artes/obterTotal/`, { cache: 'no-store' }).then(function (response) {
     
@@ -285,5 +364,5 @@ fetch(`/artes/obterTotal/`, { cache: 'no-store' }).then(function (response) {
   }
 
  
-
+ */
 </script>
