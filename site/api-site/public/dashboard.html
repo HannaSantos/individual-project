@@ -76,8 +76,6 @@
         <canvas id="chartBar" style="width: 100%; height: 100%;"></canvas>
       </div>
     </div>
-
-    <button onclick="obterTotal()">teste</button>
   </div>
   </div>
 
@@ -98,20 +96,31 @@
   cont_escultura = 0;
   cont_nouveau = 0;
   cont_barroco = 0; 
+  var ax_chartBar;
+
+  function limpar(){
+    if(ax_chartBar != undefined){
+      ax_chartBar.destroy();
+      }
+
+  }
 
   function escultura() {
+    limpar()
     idArte = 1;
     cadastrarArte()
     contagemDados(idArte)
   }
 
   function nouveau() {
+    limpar()
     idArte = 2;
     cadastrarArte()
     contagemDados(idArte)
   }
 
   function barroco() {
+    limpar()
     idArte = 3;
     cadastrarArte()
     contagemDados(idArte)
@@ -171,7 +180,7 @@ fetch(`/artes/contagemDados/${idArte}`, { cache: 'no-store' }).then(function (re
               cont_nouveau = totalArtes;
             }else if (nomeDaArtes == '"Escultura"') {
               cont_escultura = totalArtes;
-            }else if (nomeDaArtes == '"Barroco"') {
+            }else if (nomeDaArtes == '"barroco"') {
               cont_barroco = totalArtes;
             }
 
@@ -209,7 +218,9 @@ fetch(`/artes/contagemDados/${idArte}`, { cache: 'no-store' }).then(function (re
                 }
               }
             }
-            var ax_chartBar = new Chart(ctxBar, configBar); 
+
+            
+            ax_chartBar = new Chart(ctxBar, configBar); 
 
             
         });
