@@ -30,11 +30,11 @@ function cadastrarArte(req, res) {
 
 function contagemDados(req, res) {
 
-    var id = req.params.id;
+    var idArte = req.params.idArte;
 
     console.log(`Recuperando medidas em tempo real`);
 
-    artesModel.contagemDados().then(function (resultado) {
+    artesModel.contagemDados(idArte).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -47,7 +47,7 @@ function contagemDados(req, res) {
     });
 } 
 
-function enviarGrafico(req, res) {
+/* function enviarGrafico(req, res) {
 
     var id = req.params.id;
 
@@ -64,7 +64,7 @@ function enviarGrafico(req, res) {
         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
-}
+} */
 
 /* function buscarUltimasMedidas(req, res) {
 
@@ -126,6 +126,5 @@ function obterTotal(req, res) {
 
 module.exports = {
     cadastrarArte,
-    contagemDados,
-    enviarGrafico
+    contagemDados
 }

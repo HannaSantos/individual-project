@@ -95,26 +95,26 @@
   var idArte = [];
   var totalArtes = 0;
 
-/*   cont_escultura = 0;
+  cont_escultura = 0;
   cont_nouveau = 0;
-  cont_barroco = 0;  */
+  cont_barroco = 0; 
 
   function escultura() {
     idArte = 1;
     cadastrarArte()
-    contagemDados()
+    contagemDados(idArte)
   }
 
   function nouveau() {
     idArte = 2;
     cadastrarArte()
-    contagemDados()
+    contagemDados(idArte)
   }
 
   function barroco() {
     idArte = 3;
     cadastrarArte()
-    contagemDados()
+    contagemDados(idArte)
   }
 
   function cadastrarArte() {
@@ -151,9 +151,9 @@
     return false;
   }
 
-function contagemDados() {
+function contagemDados(idArte) {
 
-fetch(`/artes/contagemDados/`, { cache: 'no-store' }).then(function (response) {
+fetch(`/artes/contagemDados/${idArte}`, { cache: 'no-store' }).then(function (response) {
     
     if (response.ok) {
         
@@ -162,8 +162,55 @@ fetch(`/artes/contagemDados/`, { cache: 'no-store' }).then(function (response) {
             console.log(`Dados de votos totais: ${JSON.stringify(resposta)}`);
             resposta.reverse();
            // localStorage.setItem('quantidadeVotos',resposta[0].quantidade)
-            totalArtes = JSON.stringify(resposta[0]['Total']);
-           
+            totalArtes = JSON.stringify(resposta[0]['Total de artes']);
+            nomeDaArtes = JSON.stringify(resposta[0]['arte']);
+
+           console.log(totalArtes);
+
+            if (nomeDaArtes == '"Nouveau"') {
+              cont_nouveau = totalArtes;
+            }else if (nomeDaArtes == '"Escultura"') {
+              cont_escultura = totalArtes;
+            }else if (nomeDaArtes == '"Barroco"') {
+              cont_barroco = totalArtes;
+            }
+
+                        
+              var ctxBar = document.getElementById("chartBar").getContext("2d");
+            var configBar = {
+              type: 'bar',
+              data: {
+                labels: ["Escultura", "Art nouveau", "Barroco"], // referenciando a variável de rótulos (labels) para o gráfico de barras
+                datasets: [
+                  {
+                    label: 'Votação do estilos',
+                    data: [cont_escultura, cont_nouveau, cont_barroco], // referenciando a variável de dados para o gráfico de barras
+                    backgroundColor: [
+                      '#BF3124',
+                      '#BF532C',
+                      '#BF7E45',
+                    ],
+                    borderColor: [
+                      '#BF3124',
+                      '#BF532C',
+                      '#BF7E45',
+                    ],
+                    borderWidth: 1
+                  }
+                ]
+              },
+              options: {
+                // por padrão, vem como 'true', e faz com que o gráfico se 'mantenha com o mesmo aspecto de proporção', não ficando responsivo
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                  }
+                }
+              }
+            }
+            var ax_chartBar = new Chart(ctxBar, configBar); 
+
             
         });
     } else {
@@ -173,62 +220,6 @@ fetch(`/artes/contagemDados/`, { cache: 'no-store' }).then(function (response) {
     .catch(function (error) {
         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
     });
-}
-
-function enviarGrafico(id) {
-
-fetch(`/artes/enviarGrafico/${id}`, { cache: 'no-store' }).then(function (response) {
-
-  if (response.ok) {
-
-    response.json().then(function (resposta) {
-
-      console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-      for (let i = 0; i < totalArtes; i++) {
-
-
-        temp = JSON.stringify(resposta[i]['fkvota']);
-
-        var ax_escultura = 1;
-        var ax_nouveau = 2;
-        var ax_barroco = 3;
-
-
-        if (temp == ax_escultura) {
-          console.log('CADASTREI ' + temp)
-          cont_escultura++;
-          console.log(cont_escultura)
-        } else if (temp == ax_nouveau) {
-          console.log('CADASTREI ' + temp)
-          cont_nouveau++;
-          console.log(cont_nouveau)
-        } else if (temp == ax_barroco) {
-          console.log('CADASTREI ' + temp)
-          cont_barroco++;
-          console.log(cont_barroco)
-        } else {
-          console.log('erro')
-        }
-
-      }
-
-      grafico(cont_escultura, cont_nouveau, cont_barroco);
-
-      //console.log(cont_espirito)
-
-      let dado = JSON.stringify(resposta[0]);
-      //console.log(dado)
-      resposta.reverse();
-
-    });
-  } else {
-    console.error('Nenhum dado encontrado ou erro na API');
-  }
-})
-  .catch(function (error) {
-    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-  });
 }
 
 

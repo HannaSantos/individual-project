@@ -9,7 +9,7 @@ function cadastrarArte(idArte, idUsuario) {
     return database.executar(instrucao);
 }
 
-function contagemDados() {
+function contagemDados(idArte) {
     instrucaoSql = `select ar.arte, count(fkarte) as "Total de artes" 
                     from usuarioVoto us
                     join tbArte ar 
@@ -20,13 +20,13 @@ function contagemDados() {
     return database.executar(instrucaoSql);
 }
 
-function enviarGrafico(id) {
+/* function enviarGrafico(id) {
     instrucaoSql = `select fkarte 
                     from usuarioVoto;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
-}
+} */
 
 /* function enviarGrafico(id) {
     instrucaoSql = `select fkvota 
@@ -58,6 +58,5 @@ function buscarMedidasEmTempoReal(id) {
 
 module.exports = {
     cadastrarArte,
-    contagemDados,
-    enviarGrafico
+    contagemDados
 }

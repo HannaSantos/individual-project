@@ -19,12 +19,12 @@ router.post("/cadastrarArte/", function (req, res) {
     artesController.cadastrarArte(req, res);
 })
 
-router.get("/contagemDados/", function (req, res) {
+router.get("/contagemDados/:idArte", function (req, res) {
     artesController.contagemDados(req, res);
 });
 
-router.get("/enviarGrafico/:id", function (req, res) {
+/* router.get("/enviarGrafico/:id", function (req, res) {
     artesController.enviarGrafico(req, res);
-});
+}); */
 
 module.exports = router;
